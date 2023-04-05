@@ -1,0 +1,17 @@
+{% extends 'base.html' %} {% block content%} {% for i in related_item %}
+<div class="bg-white rounded-md shadow-md p-4 flex flex-col items-center justify-center">
+    {% if i.image %}
+    <img class="w-24 h-24 object-cover rounded-full mb-4" src="{{i.image.url}}" alt="Food Item Image"> {% else %}
+    <img class="w-24 h-24 object-cover rounded-full mb-4" src="media\default.jp" alt="Food Item Image"> {% endif %}
+    <h2 class="text-lg font-bold mb-2">{{i.name}}</h2>
+    <p class="text-gray-500 text-sm mb-2">{{i.description}}</p>
+    <div class="flex items-center justify-between w-full">
+        <p class="text-lg font-bold text-red-500">&#8377 {{i.price}}</p>
+        <div class="flex items-center space-x-2">
+            <label for="quantity" class="text-gray-500 text-sm font-semibold">Quantity: {{i.quantity}}</label>
+        </div>
+        <a href="#"> <button class="py-4 px-8 p-6 rounded-xl text-xl font-bold transition ease-in-out delay-150 bg-yellow-200 hover:-translate-y-1 hover:scale-110 hover:bg-yellow-500 duration-300 ...">Add to Basket</button>
+        </a>
+    </div>
+</div>
+{%endfor%} {%endblock%}

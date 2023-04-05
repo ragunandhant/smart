@@ -1,0 +1,21 @@
+{% extends 'base.html' %} {% block content%}
+<div class=" mt-10 bg-gray-100 py-8 px-4 p-6">
+    <h1 class="text-3xl font-bold mb-8">Browse Our Delicious Food Categories</h1>
+
+
+    <div class="flex flex-wrap justify-center gap-8 ">
+        {% for category in categories %}
+        <a href="{% url 'item:detail' category.id%}" class="flex flex-col items-center justify-center bg-gray-100 rounded-md shadow-md hover:bg-red-200 transition duration-300 ease-in-out px-4 py-2">
+                {% if category.image %}
+                    <img class="w-52 h-52 object-cover rounded-full mb-4" src="{{category.image.url}}" alt="Category Image" width="800" height="">
+                {% else %}
+                <img class="w-52 h-52 object-cover rounded-full mb-4" src="media\default.jpg" alt="Category Image">
+                 {% endif %}
+                <h2 class="text-lg font-bold text-center ">{{category.name}}</h2>
+            </a> {%endfor%}
+    </div>
+</div>
+
+{%endblock%}
+
+</html>

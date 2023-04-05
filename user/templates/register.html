@@ -1,0 +1,33 @@
+{% extends 'base.html' %} {% block content %}
+<div class="flex justify-center">
+    <div class="w-1/2 mt-8">
+        <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+            <h2 class="text-center text-2xl mb-6 font-bold">Sign up</h2>
+            <form method="POST">
+                {% csrf_token %} {{ form.non_field_errors }}
+                <div class="mb-4">
+                    <label class="block text-gray-700 font-bold mb-2" for="{{ form.username.id_for_label }}">Username</label> {{ form.username }}
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 font-bold mb-2" for="{{ form.email.id_for_label }}">Email</label> {{ form.email }}
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 font-bold mb-2" for="{{ form.password1.id_for_label }}">Password</label> {{ form.password1 }}
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 font-bold mb-2" for="{{ form.password2.id_for_label }}">Repeat Password</label> {{ form.password2 }}
+                </div>
+                <div class="flex items-center justify-between">
+                    <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+              Register
+            </button>
+
+                    <p class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800">
+                        Already have an account? <a href="{% url 'user:login'%}">Log In</a>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
